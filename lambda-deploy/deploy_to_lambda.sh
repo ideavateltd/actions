@@ -9,7 +9,7 @@ npm pack ${NPM_PACKAGE}@${VERSION}
 echo "Re-packing artifact"
 tar zxf *.tgz
 cd package
-zip ../package.zip . -r
+zip ../package.zip . -rq
 cd ..
 
 echo "Starting deployment to ${ENVIRONMENT}"
