@@ -22,7 +22,7 @@ fi
 ./setup_aws_profile.sh
 ./setup_npm_profile.sh
 
-echo "Received deployment request  for ${NPM_PACKAGE} @ ${VERSION} to ${ENVIRONMENT}"
+echo "Received deployment request for ${NPM_PACKAGE} @ ${VERSION} to ${ENVIRONMENT}"
 
 if [[ "$ENVIRONMENT" == "live" ]]; then
   if [[ "$VERSION" == "latest" ]]; then
