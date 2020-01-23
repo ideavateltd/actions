@@ -15,7 +15,10 @@ if [[ "$VERSION" == "" ]]; then
   if [[ "$GITHUB_REF" == "refs/heads/master" || "$GITHUB_REF" == "" ]]; then
     VERSION="latest"
   else
-    VERSION=`echo $GITHUB_REF | sed s,.*/,, `
+    # Process GitHub ref to get version:
+    # 1. tag ref prefix
+    # 2. npm package name prefix and @ if present
+    VERSION=`echo $GITHUB_REF | sed s,refs/tags/,,  | sed s,${NPM_PACKAGE}@,,`
   fi
 fi
 
