@@ -4,10 +4,6 @@ FROM ideavate/amazonlinux-node:12-serverless
 # Note that the workdir appears to be overridden by the GitHub Actions runtime
 WORKDIR /serverless
 
-COPY entrypoint.sh .
-COPY setup_aws_profile.sh .
-COPY setup_npm_profile.sh .
-COPY deploy_to_lambda.sh .
-COPY JSON.sh .
+COPY *.sh /serverless/
 
 ENTRYPOINT ["/serverless/entrypoint.sh"]
