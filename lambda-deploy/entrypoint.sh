@@ -28,7 +28,7 @@ fi
 echo "Received deployment request for ${NPM_PACKAGE} @ ${VERSION} to ${ENVIRONMENT}"
 
 if [[ "$ENVIRONMENT" == "live" ]]; then
-  if [[ "$VERSION" == "latest" ]]; then
+  if [[ "$VERSION" == "latest" ]] && [[ "$ALLOW_LATEST_ON_LIVE" != "true" ]]; then
     echo "ERROR: You are only allowed to deploy a tagged version to the live environment"
     exit 1
   fi
