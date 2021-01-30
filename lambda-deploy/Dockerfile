@@ -1,6 +1,6 @@
 FROM node:12-alpine
 
-RUN apk --no-cache add zip
+RUN apk --no-cache add zip curl
 
 # This should be where the base image installed the serverless tools
 # Note that the workdir appears to be overridden by the GitHub Actions runtime
