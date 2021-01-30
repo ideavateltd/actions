@@ -12,7 +12,7 @@ if [[ "$VERSION" == "" ]]; then
   # Extract environment from deployment event
   ENVIRONMENT=`cat $GITHUB_EVENT_PATH | ./JSON.sh | grep '\["deployment","environment"]' | cut -f2 | sed -e 's/"//g'`
   # Extract version from GITHUB_REF
-  if [[ "$GITHUB_REF" == "refs/heads/master" || "$GITHUB_REF" == "" ]]; then
+  if [[ "$GITHUB_REF" == "refs/heads/main" || "$GITHUB_REF" == "refs/heads/master" || "$GITHUB_REF" == "" ]]; then
     VERSION="latest"
   else
     # Process GitHub ref to get version:
@@ -23,9 +23,8 @@ if [[ "$VERSION" == "" ]]; then
 fi
 
 ./setup_aws_profile.sh
-./setup_npm_profile.sh
 
-echo "Received deployment request for ${NPM_PACKAGE} @ ${VERSION} to ${ENVIRONMENT}"
+echo "Received deployment request for ${NPM_PACKAGE}${MVN_ARTIFACTID} @ ${VERSION} to ${ENVIRONMENT}"
 
 if [[ "$ENVIRONMENT" == "live" ]]; then
   if [[ "$VERSION" == "latest" ]] && [[ "$ALLOW_LATEST_ON_LIVE" != "true" ]]; then
