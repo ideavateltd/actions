@@ -26,6 +26,8 @@ elif [[ "$MVN_GROUPID" != "" ]]; then
     VERSION=${RESOLVED_VERSION}
   fi
 
+  VERSION=`echo ${VERSION} | sed "s,^v,,"`
+
   ARTIFACT_URL="${MVN_REPO}/${GROUP_PATH}/${MVN_ARTIFACTID}/${VERSION}/${MVN_ARTIFACTID}-${VERSION}-lambda.zip"
   echo "Fetching ${ARTIFACT_URL}"
   curl -# -f -u "${MVN_USERNAME}:${MVN_PASSWORD}" -o package.zip "${ARTIFACT_URL}"
