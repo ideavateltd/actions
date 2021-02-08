@@ -34,6 +34,8 @@ if [[ "$ENVIRONMENT" == "live" ]]; then
   ./deploy_to_lambda.sh $VERSION live
 elif [[ "$ENVIRONMENT" == "staging" ]]; then
   ./deploy_to_lambda.sh $VERSION staging
+elif [[ "$ENVIRONMENT" == "dev" ]]; then
+  ./deploy_to_lambda.sh $VERSION dev
 else
   echo "ERROR: Unknown environment: ${ENVIRONMENT}"
   exit 1
