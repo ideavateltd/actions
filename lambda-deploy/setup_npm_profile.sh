@@ -4,7 +4,7 @@
 
 if [[ "$NPM_URL" != "" ]]; then
   # AWS CodeArtifact auth
-  if [[ "$NPM_TOKEN" == "" && "$NPM_URL" =~ codeartifact\..*amazonaws\.com ]]; then
+  if [[ "$NPM_TOKEN" == "" && $(expr match "$NPM_URL" ".*codeartifact\..*amazonaws\.com") != 0 ]]; then
     # Create aws codeartifact get-authorization-token command to issue token
     npmLogin=`echo "$NPM_URL" | sed -E 's,^https://([a-z]+)-([0-9]+)\.d\.codeartifact\.([a-z][a-z]-[a-z]+-[0-9]+)\.amazonaws.com/npm/([a-z]+)/$,aws codeartifact get-authorization-token --domain \1 --domain-owner \2 --region \3 --query authorizationToken --output text,'`
     echo "Calling ${npmLogin}"
