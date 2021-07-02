@@ -16,6 +16,7 @@
     "serverless-plugin-additional-stacks": "^1.5.0",
     "serverless-plugin-include-dependencies": "^4.1.0",
     "serverless-plugin-log-retention": "^2.0.0",
+    "serverless-plugin-typescript": "^1.1.9",
     "serverless-plugin-warmup": "^4.9.0",
     "serverless-prune-plugin": "^1.5.0",
     "serverless-typescript": "0.0.5"
